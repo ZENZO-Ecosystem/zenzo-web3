@@ -139,5 +139,4 @@ if (networkEnabled) {
   }
   //Call a version check if network is enabled:
   //versionCheck();
-  document.getElementById('Network').innerHTML = "<b> Network Enabled </b>";
 }

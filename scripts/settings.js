@@ -12,7 +12,6 @@ var fee;
 var privateKeyForTransactions;
 var walletAlreadyMade = 0;
 var wallet_version = '1.02';
-var closeTheAlert = '<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>'
 function setExplorer() {
   explorer = document.getElementById("explorer").value
   alert(`${explorer} has been set succesfully`);
@@ -23,7 +22,7 @@ function toggleDebug() {
     document.getElementById('Debug').innerHTML = "";
   } else {
     debug = true;
-    document.getElementById('Debug').innerHTML = "<b> DEBUG MODE </b>" + closeTheAlert;
+    document.getElementById('Debug').innerHTML = "<i class=\"fas fa-bug\" style=\"padding-right: 5px;\"></i>Debug Mode";
   }
   alert(`Debug set to ${debug}`);
 }
@@ -33,7 +32,7 @@ function toggleNetwork() {
     document.getElementById('Network').innerHTML = "";
   } else {
     networkEnabled = true;
-    document.getElementById('Network').innerHTML = "<b> Network Enabled </b>" + closeTheAlert;
+    document.getElementById('Network').innerHTML = "<i class=\"fas fa-wifi\" style=\"padding-right: 5px;\"></i>Network Enabled";
   }
   alert(`Network set to ${networkEnabled}`);
 }

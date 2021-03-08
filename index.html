@@ -54,24 +54,29 @@
   <div id="page-container">
     <div id="content-wrap">
       <nav class="navbar navbar-expand-lg sticky-top navbar-light navbarSpecial">
-        <img class="navbar-brand noselect" src='assets/logo.png' alt="ZENZO"
-          style='vertical-align: middle;width:150px;display:inline'>
+        <img class="navbar-brand noselect" src='assets/logo.png' alt="ZENZO" style='vertical-align: middle;width:150px;display:inline;padding-right:10px;'>
         <button id="navbarToggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse noselect" id="navbarNav">
           <ul class="navbar-nav mr-auto" style="cursor: pointer;">
-            <li class="nav-item"><a id='start' class="nav-link tablinks" onclick="openTab(event, 'home')">Intro</a></li>
-            <li class="nav-item"><a class="nav-link tablinks"
+            <li style="color: #ffffff;"><a style="opacity: 0.7;" id='start' class="nav-link tablinks" onclick="openTab(event, 'home')">About</a></li>
+            <li style="color: #ffffff;"><a style="opacity: 0.7;" class="nav-link tablinks"
                 onclick="openTab(event, 'keypair')">Dashboard</a></li>
-            <li class="nav-item"><a id="txTab" class="nav-link tablinks" onclick="openTab(event, 'Transaction')">Create
+            <li style="color: #ffffff;"><a style="opacity: 0.7;" id="txTab" class="nav-link tablinks" onclick="openTab(event, 'Transaction')">Create
                 Transaction</a></li>
-            <li style="display: none;" class="nav-item"><a class="nav-link tablinks"
+            <li style="display: none;" style="color: #ffffff;"><a style="opacity: 0.7;" class="nav-link tablinks"
                 onclick="startNetworkTest();openTab(event, 'WalletData');">Network Data</a></li>
-            <li class="nav-item"><a class="nav-link tablinks"
+            <li style="color: #ffffff;"><a style="opacity: 0.7;" class="nav-link tablinks"
                 onclick="openTab(event, 'Settings');">Settings</a></li>
           </ul>
+          <div class="form-inline my-2 my-lg-0">
+            <ul class="navbar-nav mr-auto" style="cursor: pointer;">
+              <li class="nav-item"><a style="opacity: 1 !important; color: white;" class="nav-link keychainify-checked"><span id="Network"><i class="fas fa-wifi" style="padding-right: 5px;"></i>Network Enabled</span></a></li>
+              <li class="nav-item"><a style="opacity: 1 !important; color: white;" class="nav-link keychainify-checked"><span id="Debug"></span></a></li>
+            </ul>
+          </div>
         </div>
       </nav>
       <br>
@@ -99,10 +104,6 @@
       <div class="container-fluid">
         <div class="row no-gutters">
           <div class='col-md-1'>
-            <div style='float:center'>
-              <div id='Debug' style='color:#00b7ff'></div>
-              <div id='Network' style='color:#00b7ff'></div>
-            </div>
           </div>
           <div class='col-md-10'>
             <div id="home" class="tabcontent">
@@ -298,6 +299,7 @@
       </div>
     </div>
     <div class="footer">
+      <div class="footer-line"></div>
       <div style='display:inline;' id='dcfooter'></div>
     </div>
   </div>
@@ -558,10 +560,14 @@
       tablinks = document.getElementsByClassName("tablinks");
       for (i = 0; i < tablinks.length; i++) {
         tablinks[i].className = tablinks[i].className.replace(" active", "");
+        tablinks[i].style.color = "#ffffff";
+        tablinks[i].style.opacity = 0.7;
       }
       document.getElementById(tabName).style.display = "block";
-      if (!evt.currentTarget.className.includes("active"))
+      if (!evt.currentTarget.className.includes("active")) {
         evt.currentTarget.className += " active";
+        evt.currentTarget.style.opacity = 1;
+      }
 
       // Close the navbar if it's not already closed
       if (!document.getElementById("navbarToggler").className.includes("collapsed"))

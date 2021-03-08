@@ -138,14 +138,28 @@ input::-moz-focus-inner {
   position: absolute;
   bottom: 0;
   width: 100%;
-  background-color: #0b2840;
-  color: #96a8b6;
+  background-color: transparent;
+  color: #808080;
   height: 3rem;
   text-align: center;
 }
+.footer a {
+  color: #4d4d4d;
+}
+.footer-line {
+  position: relative;
+  width: 100%;
+  height: 10px;
+  background: linear-gradient(90deg, rgba(135,120,220,1) 0%, rgba(74,161,217,1) 35%, rgba(0,211,213,1) 100%);
+}
 
 .navbarSpecial{
-  background-color:#ffffff;
+  background: linear-gradient(90deg, rgba(135,120,220,1) 0%, rgba(74,161,217,1) 35%, rgba(0,211,213,1) 100%);
+}
+
+.nav-link {
+  font-size: large;
+  padding-right: 25px !important;
 }
 
 /*Breakpoints */

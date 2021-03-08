@@ -80,10 +80,7 @@ var from_b58 = function (
   return new Uint8Array(b) //return the final byte array in Uint8Array format
 }
 var randArr = new Uint8Array(32) //create a typed array of 32 bytes (256 bits)
-if (debug) {
-  document.getElementById('Debug').innerHTML = "<b> DEBUG MODE </b>";
-}
-document.getElementById('dcfooter').innerHTML = '© 2021 ZENZO Ecosystem - All rights reserved. <br><a href="https://github.com/ZENZO-Ecosystem/zenzo-web3">ZENZO Web 3.0 - v' + wallet_version + '</a>';
+document.getElementById('dcfooter').innerHTML = '© Copyright ZENZO Ecosystem 2018-2021. All rights reserved. <br><a href="https://github.com/ZENZO-Ecosystem/zenzo-web3">ZENZO Web Wallet - v' + wallet_version + '</a>';
 //Wallet Import
 importWallet = function (newWif = false) {
   if (walletAlreadyMade != 0) {
