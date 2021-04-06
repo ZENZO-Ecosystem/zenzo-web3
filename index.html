@@ -106,25 +106,46 @@
           <div class='col-md-1'>
           </div>
           <div class='col-md-10'>
-            <div id="home" class="tabcontent">
-              <center>
-                <h3>Welcome to the ZENZO Web 3.0 wallet!</h3>
-              </center>
-              <h4>Be your own Bank!</h4>
-              <h5 style='text-indent: 30px;'>
-                The ZENZO web 3.0 wallet has <b>no custody</b> over your funds. You are in full ownership of your keys and your ZNZ.
-                With this wallet, you can use ZENZO across the web, on-the-go, with full safety of your funds in your very 
-                own protection. The wallet has many customization options, can be downloaded and ran locally, has a dedicated 
-                offline mode, and can be cloned directly from GitHub!
-              </h5>
-              <br>
-              <h4>Universal and Portable</h4>
-              <h5 style='text-indent: 30px;'>
-                With our built-in tools, you can generate cryptographically-secure addresses with the power of your browser and 
-                hardware. You can generate 'random' addresses or you can generate vanity addresses with your own custom prefixes. 
-                In addition, <b>all</b> keys are entirely universal and can be imported/exported directly to and from ZENZO Core to this 
-                web wallet.
-              </h5>
+            <div id="home" class="tabcontent" style="background-color: transparent; text-align: center;">
+              <h4>What is a Web 3.0 Wallet?</h4>
+              <h6 style='background-color: #ffffff; padding: 15px; border-radius: 8px; text-align: left;'>
+                Web 3.0 refers to the next generation of the internet, with a large emphasis of decentralization and giving power back to 
+                the people through true digital asset ownership. ZENZO also utilizes what is referred to as a "web wallet", which is a 
+                minimalistic, non-custodial ZENZO (ZNZ) Wallet that does not require the user to run a full blockchain node. Users have 
+                full access to their funds at all times. Additionally, ZENZO has 0 access to any funds through the web wallet or ZENZO 
+                Core Wallet.
+              </h6>
+              <br><br>
+              <h4>Why use a Web Wallet?</h4>
+              <h6 style='background-color: #ffffff; padding: 15px; border-radius: 8px; text-align: left;'>
+                Web wallets are generally known for being much more user-friendly and require a lot less energy and resources to operate 
+                and manage. This means that a web wallet does not rely on heavy hardware and has no need to host a full node on the network. 
+                These types of cryptocurrency wallets are portable and easy for anyone to use through any web browser and even on mobile. 
+                Users still need to safely store their private keys, which are easily accessible through the user interface.
+              </h6>
+              <br><br>
+              <h4>Customizations</h4>
+              <h6 style='background-color: #ffffff; padding: 15px; border-radius: 8px; text-align: left;'>
+                This web wallet has many customization options. It can be downloaded and ran locally, has a dedicated offline mode, and can 
+                be cloned directly from the official ZENZO GitHub repository. With these built-in tools, you can generate cryptographically-secure 
+                addresses with the power of your browser and hardware. You can generate 'random' addresses or you can generate vanity addresses 
+                with your own custom prefixes. In addition, all keys are entirely universal and can be imported/exported directly to and 
+                from ZENZO Core to this web wallet.
+              </h6>
+              <br><br>
+              <p style="opacity: 0.7;">Want to learn more?</p>
+              <button onclick="openSite('https://github.com/ZENZO-Ecosystem/zenzo-web3')" style="background-image: url(./assets/github-logo.png); background-repeat: no-repeat; background-size: 60%; width: 150px; height: 50px; background-position: center; background-color: #8579dc; border-radius: 6px;"></button>
+              <button onclick="openSite('https://discord.gg/zenzo')" style="background-image: url(./assets/discord-logo.png); background-repeat: no-repeat; background-size: 60%; width: 150px; height: 50px; background-position: center; background-color: #13c6d6; border-radius: 6px;"></button>
+              <br><br>
+              <div style="width: 100%; background-color: #e2e3e8; padding: 15px; border-radius: 8px; text-align: left;">
+                <p><b>Disclaimer:</b> The ZENZO Web Wallet is experimental, open-source technology. This means that anyone around the world can 
+                  help contribute to the public codebase and that there are always unforeseen risks of using new technology. Before using this 
+                  web wallet, understand the all of the risks involved, do thorough research, and if you feel uncertain or uncomfortable do not 
+                  use the web wallet. By using this web wallet, you understand that there is nothing that ZENZO can do if you happen to lose 
+                  your private keys (access to your funds) and ZENZO Ecosystem will not be held responsible under any shape or form.
+                </p>
+              </div>
+              <br><br>
             </div>
             <div id="keypair" class="tabcontent">
               <input style="width: 0px; height: 0px; opacity: 0;" type="text" id="clipboard">
@@ -574,6 +595,10 @@
         document.getElementById("navbarToggler").click();
     }
     document.getElementById("start").click();
+
+    function openSite(url) {
+      window.open(url, "_blank");
+    }
 
     function refreshChainData() {
       // If in offline mode: don't sync ANY data or connect to the internet
