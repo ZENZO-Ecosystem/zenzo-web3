@@ -147,22 +147,31 @@
               </div>
               <br><br>
             </div>
-            <div id="keypair" class="tabcontent">
-              <input style="width: 0px; height: 0px; opacity: 0;" type="text" id="clipboard">
-              <div id='importWallet' style='display:none;'>
-                <input type="text" id='privateKey' placeholder="Private Key">
-                <button onclick="importWallet()">Import wallet</button>
-              </div>
-              <div id='generateWallet'>
-                <button onclick="generateWallet()">Create A New Wallet</button>
-              </div>
+            <div id="keypair" class="tabcontent"  style="background-color: transparent;">
+              <h4 style="text-align: center;">Welcome to your Dashboard</h4>
               <br>
-              <div id='generateVanityWallet'>
-                <input style="display:none;" type="text" id='prefix' placeholder="Address Prefix">
-                <button onclick="generateVanityWallet()">Create A Vanity Wallet</button>
+              <div style='background-color: #ffffff;position: relative;text-align: center;padding: 50px;border-radius: 8px;margin-left: auto;margin-right: auto;display: flex;flex-direction: row;flex-flow: wrap;flex-wrap: wrap;'>
+                <div id='generateWallet' style="margin: auto; margin-top: 2vh; margin-bottom: 2vh;">
+                  <p style="opacity: 0.7;">New User?</p>
+                  <button onclick="generateWallet()" style="background-color: #8579dc;color: white;">Create A New Wallet</button>
+                </div>
+                <br>
+                <div id='generateVanityWallet' style="margin: auto; margin-top: 2vh; margin-bottom: 2vh;">
+                  <p style="opacity: 0.7;">Customize Your Address</p>
+                  <input style="display:none; width: 100%;" type="text" id='prefix' placeholder="Address Prefix">
+                  <button onclick="generateVanityWallet()" style="background-color: #3ea9d8;color: white;">Create A Vanity Wallet</button>
+                </div>
+                <br>
+                <div style="margin: auto; margin-top: 2vh; margin-bottom: 2vh;">
+                  <p id="wToggleDesc" style="opacity: 0.7;">Already have a wallet?</p>
+                  <button id='wToggle' onclick='toggleWallet()' style="background-color: #13c6d6;color: white;">Access My Wallet</button>
+                </div>
+                <div id='importWallet' style='display:none; margin: auto; margin-top: 2vh; margin-bottom: 2vh;'>
+                  <p style="opacity: 0.7;">Already have a wallet?</p>
+                  <input type="text" id='privateKey' placeholder="Private Key">
+                  <button onclick="importWallet()" style="background-color: #13c6d6;color: white;">Import wallet</button>
+                </div>
               </div>
-              <br>
-              <button id='wToggle' onclick='toggleWallet()'>Access My Wallet</button>
               <br>
               <br>
               <div id='genKeyWarning' style='display: none;' class="alert alert-danger" role="alert">
@@ -174,8 +183,8 @@
               </div>
               <br>
               <div id="guiWallet" style="display: none;">
-                <div id="banners" style="height: 160px; width: 100%; display: flex; flex-wrap: wrap; color: white; margin-bottom: 250px;">
-                  <div class="graybox" style="height: 99%; width: 300px; background: linear-gradient(50deg, rgb(175, 170, 255) 0%, rgb(112, 112, 227) 80%);"">
+                <div id="banners" style="height: fit-content;width: 100%;display: flex;flex-wrap: wrap;color: white;margin-bottom: 250px;background-color: white;flex-direction: row;justify-content: space-evenly;border-radius: 8px;align-content: center;">
+                  <div class="graybox" style="height: 160px;width: 300px;background: linear-gradient(50deg, rgb(175, 170, 255) 0%, rgb(112, 112, 227) 80%);margin-top: 3vh;margin-bottom: 3vh;"">
                     <h3 class="noselect" style="margin: 10px; position: relative; left: 165px; cursor: default;">Address</h3>
                     <br>
                     <div>
@@ -184,10 +193,11 @@
                       <b id="guiQRButton" style=" width: 60%; display: inline-block; right: -105px; position: relative; font-size: large; bottom: 40px;">
                         <i data-toggle="modal" data-target="#qrModal" style="cursor: pointer; margin-right: 15px;" class="fas fa-qrcode"></i>
                         <i onclick="toClipboard('guiAddress', 'guiAddressCopy')" id="guiAddressCopy" style="cursor: pointer; margin-right: 15px;" class="fas fa-clipboard" ></i>
+                        <input style="width: 0px; height: 0px; opacity: 0;" type="text" id="clipboard">
                       </b>
                     </div>
                   </div>
-                  <div class="graybox" style="height: 99%; width: 300px; background: linear-gradient(50deg, rgba(112,112,227,1) 0%, rgba(45,181,215,1) 90%);"">
+                  <div class="graybox" style="height: 160px;width: 300px;background: linear-gradient(50deg, rgba(112,112,227,1) 0%, rgba(45,181,215,1) 90%);margin-top: 3vh;margin-bottom: 3vh;"">
                     <h3 class="noselect" style="margin: 10px; position: relative; left: 135px; cursor: default;">Balance &nbsp;&nbsp;<span id="balanceReload" class="reload noselect" onclick="refreshChainData()">&#x21bb;</span></h3>
                     <div>
                       <div style="display: inline-block; position: relative; width: 65px; height: 65px; left: 30px; bottom: 5px; border-style: solid; border-radius: 1000px; border-width: 3px; background-size: cover; background-image: url(assets/logo-circle.png);"></div>
@@ -403,16 +413,18 @@
       document.getElementById('PublicQR').style.display   = !viewPrivKey ? 'block' : 'none';
     }
     function toggleWallet() {
-      var toggle = document.getElementById("wToggle").innerHTML;
+      var toggle = document.getElementById("wToggle");
+      var toggleDesc = document.getElementById("wToggleDesc");
       // Hide and Reset the Vanity address input
       document.getElementById('prefix').value = "";
       document.getElementById('prefix').style.display = 'none';
-      if (toggle === "Access My Wallet") {
+      if (toggle.innerHTML === "Access My Wallet") {
         if (!hasEncryptedWallet()) {
           // No local wallet found
             document.getElementById("generateWallet").style.display = 'none';
             document.getElementById("importWallet").style.display = 'block';
-            document.getElementById("wToggle").innerHTML = "Create A New Wallet";
+            toggle.innerHTML = "Create A New Wallet";
+            toggleDesc.innerHTML = "New User?";
             return;
         }
         // We have a local wallet! Display the decryption prompt
@@ -420,21 +432,25 @@
           if (hasWallet) {
             document.getElementById("generateWallet").style.display = 'none';
             document.getElementById("importWallet").style.display = 'block';
-            document.getElementById("wToggle").innerHTML = "Create A New Wallet";
+            toggle.innerHTML = "Create A New Wallet";
+            toggleDesc.innerHTML = "New User?";
           } else {
             document.getElementById("generateWallet").style.display = 'block';
             document.getElementById("importWallet").style.display = 'none';
-            document.getElementById("wToggle").innerHTML = "Access My Wallet";
+            toggle.innerHTML = "Access My Wallet";
+            toggleDesc.innerHTML = "Already have a wallet?";
           }
         }).catch(e => {
           document.getElementById("generateWallet").style.display = 'none';
           document.getElementById("importWallet").style.display = 'block';
-          document.getElementById("wToggle").innerHTML = "Create A New Wallet";
+          toggle.innerHTML = "Create A New Wallet";
+          toggleDesc.innerHTML = "New User?";
         });
       } else {
         document.getElementById("generateWallet").style.display = 'block';
         document.getElementById("importWallet").style.display = 'none';
-        document.getElementById("wToggle").innerHTML = "Access My Wallet";
+        toggle.innerHTML = "Access My Wallet";
+        toggleDesc.innerHTML = "Already have a wallet?";
       }
     }
     async function generateVanityWallet() {
