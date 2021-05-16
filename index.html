@@ -54,15 +54,15 @@
   <div id="page-container">
     <div id="content-wrap">
       <nav class="navbar navbar-expand-lg sticky-top navbar-light navbarSpecial">
-        <img class="navbar-brand noselect" src='assets/logo.svg' alt="ZENZO" style='vertical-align: middle;width:150px;display:inline;padding-right:10px;'>
+        <img class="navbar-brand noselect" onclick="openTab(event, 'start')" src='assets/logo.svg' alt="ZENZO" style='vertical-align: middle;width:150px;display:inline;padding-right:10px;cursor: pointer;'>
         <button id="navbarToggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
           aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse noselect" id="navbarNav">
           <ul class="navbar-nav mr-auto" style="cursor: pointer;">
-            <li style="color: #ffffff;"><a style="opacity: 0.7;" id='start' class="nav-link tablinks" onclick="openTab(event, 'home')">About</a></li>
-            <li style="color: #ffffff;"><a style="opacity: 0.7;" class="nav-link tablinks"
+            <li style="color: #ffffff;"><a style="opacity: 0.7;" id='about' class="nav-link tablinks" onclick="openTab(event, 'home')">About</a></li>
+            <li style="color: #ffffff;"><a style="opacity: 0.7;" id="dashboard" class="nav-link tablinks"
                 onclick="openTab(event, 'keypair')">Dashboard</a></li>
             <li style="color: #ffffff;"><a style="opacity: 0.7;" id="txTab" class="nav-link tablinks" onclick="openTab(event, 'Transaction')">Create
                 Transaction</a></li>
@@ -106,6 +106,42 @@
           <div class='col-md-1'>
           </div>
           <div class='col-md-10'>
+            <div id="start" class="tabcontent" style="background-color: transparent; text-align: center;">
+              <center>
+                <h4 style="display: flex;justify-content: center; padding: 15px; border-radius: 8px; text-align: left; max-width: 525px;">
+                <div style="height: auto; width: 10px;position: relative;z-index: 1000;background: linear-gradient(0deg, rgba(19,199,214,1) 0%, rgba(91,149,218,1) 50%, rgba(134,120,220,1) 100%);border-radius: 1000px;margin-right: 15px;"></div>
+                  <center style="background-color: #ffffff;padding: 20px;border-radius: 8px;"><img style="max-width: 200px;" src="assets/block.png">
+                    <br>
+                    <br>
+                    Welcome to the ZENZO Web Wallet
+                    <br><br>
+                    <button onclick="document.getElementById('dashboard').click();" style="color: white; font-size: 18px; background-size: 60%; width: 150px; height: 50px; background-position: center; background-color: #8579dc; border-radius: 6px;">Get Started</button>
+                  </center>
+                <div style="height: auto; width: 10px;position: relative;z-index: 1000;background: linear-gradient(0deg, rgba(19,199,214,1) 0%, rgba(91,149,218,1) 50%, rgba(134,120,220,1) 100%);border-radius: 1000px;margin-left: 15px;"></div>
+                </h4>
+              </center>
+              <br><br>
+              <div style="display: flex; justify-content: center; flex-wrap: wrap; width: 100%; color: white; background-color: #8579dc; padding: 15px; padding-bottom:1px; border-radius: 8px; text-align: left;">
+                <p style="padding-left: 20px; padding-right: 20px;">
+                  <span style="color:#13c7d6;position:relative;font-size:x-small;top:-2px;margin-right:5px;">⬤</span> Non-Custodial
+                </p>
+                <p style="padding-left: 20px; padding-right: 20px;">
+                  <span style="color:#13c7d6;position:relative;font-size:x-small;top:-2px;margin-right:5px;">⬤</span> Fast & Simple
+                </p>
+                <p style="padding-left: 20px; padding-right: 20px;">
+                  <span style="color:#13c7d6;position:relative;font-size:x-small;top:-2px;margin-right:5px;">⬤</span> Secure
+                </p>
+                <p style="padding-left: 20px; padding-right: 20px;">
+                  <span style="color:#13c7d6;position:relative;font-size:x-small;top:-2px;margin-right:5px;">⬤</span> Portable
+                </p>
+              </div>
+              <br><br>
+              <center>
+                <p style="opacity: 0.6;">How does it work?</p>
+                <button onclick="document.getElementById('about').click();" style="color: white; font-size: 18px; background-size: 60%; width: 150px; height: 50px; background-position: center; background-color: #13c6d6; border-radius: 6px;">Learn More</button>
+              </center>
+              <br><br>
+            </div>
             <div id="home" class="tabcontent" style="background-color: transparent; text-align: center;">
               <h4>What is a Web 3.0 Wallet?</h4>
               <h6 style='background-color: #ffffff; padding: 15px; border-radius: 8px; text-align: left;'>
@@ -601,7 +637,7 @@
         tablinks[i].style.opacity = 0.7;
       }
       document.getElementById(tabName).style.display = "block";
-      if (!evt.currentTarget.className.includes("active")) {
+      if (!evt || !evt.currentTarget.className.includes("active")) {
         evt.currentTarget.className += " active";
         evt.currentTarget.style.opacity = 1;
       }
@@ -610,7 +646,8 @@
       if (!document.getElementById("navbarToggler").className.includes("collapsed"))
         document.getElementById("navbarToggler").click();
     }
-    document.getElementById("start").click();
+
+    openTab(null, 'start');
 
     function openSite(url) {
       window.open(url, "_blank");
